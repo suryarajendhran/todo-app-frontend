@@ -3,7 +3,7 @@
     <b-navbar>
       <template #brand>
         <b-navbar-item>
-          <div class="title">Nameless todo app</div>
+          <div class="title">Nameless TODO app</div>
         </b-navbar-item>
       </template>
 

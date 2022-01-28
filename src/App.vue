@@ -48,7 +48,6 @@ export default Vue.extend({
 
 <style>
 #app, button {
-  font-family: Avenir, Helvetica, Arial, sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
