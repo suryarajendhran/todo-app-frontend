@@ -1,4 +1,5 @@
 import Todo from '@/interfaces/Todo.interface';
+import isMobile from 'is-mobile';
 import Vue from 'vue';
 import Vuex from 'vuex';
 import api from '../api';
@@ -8,6 +9,7 @@ export default new Vuex.Store({
   state: () => ({
     todos: [],
     filter: 'all',
+    isMobile: isMobile(),
   }),
   mutations: {
     updateTodos: (state, todos) => {

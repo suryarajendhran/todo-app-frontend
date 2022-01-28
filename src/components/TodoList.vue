@@ -1,9 +1,9 @@
 <template>
   <b-table
     :data="todos"
-    :mobile-cards="true"
-    :paginated="true"
-    :per-page="5"
+    :mobile-cards="false"
+    :paginated="todos.length > 9"
+    :per-page="isMobile ? 7 : 9"
     :show-header="false"
     default-sort="created_at"
     default-sort-direction="desc"
@@ -27,7 +27,7 @@
       </p>
     </b-table-column>
 
-    <b-table-column field="created_at" label="Date" sortable centered v-slot="props">
+    <b-table-column field="created_at" label="Date" sortable v-slot="props" numeric>
       <span class="tag is-success">
         {{ new Date(props.row.created_at).toLocaleTimeString() }}
       </span>
@@ -83,6 +83,9 @@ export default Vue.extend({
         default:
           return store.state.todos;
       }
+    },
+    isMobile() {
+      return store.state.isMobile;
     },
   },
   created() {
