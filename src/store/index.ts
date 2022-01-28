@@ -3,11 +3,10 @@ import Vuex from 'vuex';
 import api from '../api';
 
 Vue.use(Vuex);
-
 export default new Vuex.Store({
-  state: {
+  state: () => ({
     todos: [],
-  },
+  }),
   mutations: {
     updateTodos: (state, todos) => {
       state.todos = todos;
@@ -17,6 +16,15 @@ export default new Vuex.Store({
     createTodo: async ({ commit }, todoDescription: string) => {
       const { updatedTodos } = await api.createTodo(todoDescription);
       commit('updateTodos', updatedTodos);
+    },
+    loadTodos: async ({ commit }) => {
+      commit('updateTodos', await api.getAllTodos());
+    },
+    toggleTodo: async ({ commit, state }, todoId) => {
+      const [todoToBeUpdated]: any = state.todos.filter((todo: any) => todo.id === todoId);
+      todoToBeUpdated.completed = !todoToBeUpdated.completed;
+      console.log(todoToBeUpdated);
+      const { updatedTodos } = await api.updateTodo(todoToBeUpdated);
     },
   },
   modules: {

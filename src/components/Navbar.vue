@@ -1,7 +1,7 @@
 <template>
   <b-navbar>
     <template #brand>
-      <b-navbar-item tag="router-link" :to="{ path: '/' }">
+      <b-navbar-item>
         <div class="title">Nameless todo app</div>
       </b-navbar-item>
     </template>

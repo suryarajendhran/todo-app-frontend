@@ -2,9 +2,17 @@
   <div id="app">
     <Navbar />
     <div class="container">
-      <b-field label="Name">
-        <b-input v-model="name"></b-input>
+      <b-field label="Enter your todo here">
+        <b-input
+          v-model="newTodoDescription"
+          :loading="isInputLoading"
+          @keyup.native.enter="handleNewTodo"
+        ></b-input>
       </b-field>
+      <TodoList />
+      <p>
+        {{ todos }}
+      </p>
     </div>
   </div>
 </template>
@@ -12,10 +20,29 @@
 <script lang="ts">
 import Vue from 'vue';
 import Navbar from './components/Navbar.vue';
+import store from './store';
+import TodoList from './components/TodoList.vue';
 
 export default Vue.extend({
   name: 'App',
-  components: { Navbar },
+  components: { Navbar, TodoList },
+  data: () => ({ newTodoDescription: '', isInputLoading: false }),
+  methods: {
+    async handleNewTodo() {
+      console.log(this.newTodoDescription);
+      this.isInputLoading = true;
+      await store.dispatch('createTodo', this.newTodoDescription);
+      this.isInputLoading = false;
+    },
+  },
+  computed: {
+    todos() {
+      return store.state.todos;
+    },
+  },
+  created() {
+    store.dispatch('loadTodos');
+  },
 });
 </script>
 
