@@ -1,8 +1,19 @@
 <template>
-  <b-table :data="todos" :mobile-cards="true" :paginated="true" :per-page="5" :show-header="false">
+  <b-table
+    :data="todos"
+    :mobile-cards="true"
+    :paginated="true"
+    :per-page="5"
+    :show-header="false"
+    default-sort="created_at"
+  >
     <b-table-column field="completed" label="status" centered v-slot="props">
       <b-button
-        @click="() => {toggleTodo(props.row.id)}"
+        @click="
+          () => {
+            toggleTodo(props.row.id);
+          }
+        "
         rounded
         size="is-small"
         :icon-left="props.row.completed ? 'check' : ''"
@@ -28,7 +39,6 @@
 </template>
 
 <script lang="ts">
-import api from '@/api';
 import Vue from 'vue';
 import store from '../store';
 

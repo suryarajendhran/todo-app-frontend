@@ -10,9 +10,6 @@
         ></b-input>
       </b-field>
       <TodoList />
-      <p>
-        {{ todos }}
-      </p>
     </div>
   </div>
 </template>
@@ -33,6 +30,7 @@ export default Vue.extend({
       this.isInputLoading = true;
       await store.dispatch('createTodo', this.newTodoDescription);
       this.isInputLoading = false;
+      this.newTodoDescription = '';
     },
   },
   computed: {

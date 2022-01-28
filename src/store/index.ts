@@ -20,11 +20,11 @@ export default new Vuex.Store({
     loadTodos: async ({ commit }) => {
       commit('updateTodos', await api.getAllTodos());
     },
-    toggleTodo: async ({ commit, state }, todoId) => {
+    toggleTodo: async ({ commit, state }, todoId: string) => {
       const [todoToBeUpdated]: any = state.todos.filter((todo: any) => todo.id === todoId);
       todoToBeUpdated.completed = !todoToBeUpdated.completed;
-      console.log(todoToBeUpdated);
       const { updatedTodos } = await api.updateTodo(todoToBeUpdated);
+      commit('updateTodos', updatedTodos);
     },
   },
   modules: {
