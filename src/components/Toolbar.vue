@@ -25,9 +25,12 @@
     </div>
     <div class="level-right">
       <div class="level-item">
-        <div>
-          <b-button label="Clear completed" type="is-danger is-light" icon-left="delete"></b-button>
-        </div>
+        <b-button
+          @click="clearCompletedTodos"
+          label="Clear completed"
+          type="is-danger is-light"
+          icon-left="delete"
+        ></b-button>
       </div>
     </div>
   </div>
@@ -40,6 +43,11 @@ import Vue from 'vue';
 export default Vue.extend({
   name: 'Toolbar',
   data: () => ({ filter: 'all' }),
+  methods: {
+    clearCompletedTodos() {
+      store.dispatch('clearCompletedTodos');
+    },
+  },
   watch: {
     filter() {
       store.commit('updateFilter', this.filter);

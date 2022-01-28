@@ -34,6 +34,10 @@ export default new Vuex.Store({
       const { updatedTodos } = await api.deleteTodo(todo);
       commit('updateTodos', updatedTodos);
     },
+    clearCompletedTodos: async ({ commit }) => {
+      const { updatedTodos } = await api.clearCompletedTodos();
+      commit('updateTodos', updatedTodos);
+    },
   },
   modules: {
   },

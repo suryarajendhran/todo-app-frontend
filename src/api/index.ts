@@ -42,6 +42,16 @@ const deleteTodo = async (todo: any): Promise<any> => {
   }
 };
 
+const clearCompletedTodos = async (): Promise<any> => {
+  try {
+    const res = await superagent.delete(`${apiURL}completed`);
+    return res.body;
+  } catch (err) {
+    console.error(err);
+    return err;
+  }
+};
+
 export default {
-  createTodo, getAllTodos, updateTodo, deleteTodo,
+  createTodo, getAllTodos, updateTodo, deleteTodo, clearCompletedTodos,
 };
