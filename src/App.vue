@@ -1,11 +1,12 @@
 <template>
   <div id="app">
     <Navbar />
-    <div class="container">
-      <b-field label="Enter your todo here">
+    <div class="container mt-4">
+      <b-field>
         <b-input
           v-model="newTodoDescription"
           :loading="isInputLoading"
+          placeholder="Add your todo here"
           @keyup.native.enter="handleNewTodo"
         ></b-input>
       </b-field>

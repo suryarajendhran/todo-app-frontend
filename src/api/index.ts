@@ -25,7 +25,6 @@ const createTodo = async (description: string): Promise<any> => {
 const updateTodo = async (todo: any): Promise<any> => {
   try {
     const res = await superagent.put(`${apiURL}`).send(todo);
-    console.log(res.body);
     return res.body;
   } catch (err) {
     console.error(err);
@@ -33,4 +32,16 @@ const updateTodo = async (todo: any): Promise<any> => {
   }
 };
 
-export default { createTodo, getAllTodos, updateTodo };
+const deleteTodo = async (todo: any): Promise<any> => {
+  try {
+    const res = await superagent.delete(`${apiURL}`).send(todo);
+    return res.body;
+  } catch (err) {
+    console.error(err);
+    return err;
+  }
+};
+
+export default {
+  createTodo, getAllTodos, updateTodo, deleteTodo,
+};

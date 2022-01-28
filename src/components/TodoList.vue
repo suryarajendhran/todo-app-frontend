@@ -6,8 +6,9 @@
     :per-page="5"
     :show-header="false"
     default-sort="created_at"
+    default-sort-direction="desc"
   >
-    <b-table-column field="completed" label="status" centered v-slot="props">
+    <b-table-column field="completed" label="Status" centered v-slot="props">
       <b-button
         @click="
           () => {
@@ -26,10 +27,25 @@
       </p>
     </b-table-column>
 
-    <b-table-column field="created_at" label="Date" centered v-slot="props">
+    <b-table-column field="created_at" label="Date" sortable centered v-slot="props">
       <span class="tag is-success">
-        {{ new Date(props.row.created_at).toLocaleDateString() }}
+        {{ new Date(props.row.created_at).toLocaleTimeString() }}
       </span>
+    </b-table-column>
+
+    <b-table-column label="Actions" numeric v-slot="props">
+      <b-button
+        @click="
+          () => {
+            deleteTodo(props.row);
+          }
+        "
+        rounded
+        size="is-small"
+        icon-left="delete"
+        type="is-danger"
+      >
+      </b-button>
     </b-table-column>
 
     <template #empty>
@@ -46,8 +62,9 @@ export default Vue.extend({
   name: 'TodoList',
   data: () => ({ newTodoDescription: '', isInputLoading: false }),
   methods: {
-    deleteTodo() {
-      console.log('Deleting method');
+    deleteTodo(todo: any) {
+      console.log(todo);
+      store.dispatch('deleteTodo', todo);
     },
     toggleTodo(todoId: any) {
       store.dispatch('toggleTodo', todoId);

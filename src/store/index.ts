@@ -26,6 +26,10 @@ export default new Vuex.Store({
       const { updatedTodos } = await api.updateTodo(todoToBeUpdated);
       commit('updateTodos', updatedTodos);
     },
+    deleteTodo: async ({ commit }, todo: any) => {
+      const { updatedTodos } = await api.deleteTodo(todo);
+      commit('updateTodos', updatedTodos);
+    },
   },
   modules: {
   },
