@@ -1,7 +1,7 @@
 import Todo from '@/interfaces/Todo.interface';
 import superagent from 'superagent';
 
-const apiURL = 'http://localhost:8080/';
+const apiURL = process.env.API_URL || 'http://localhost:8080/';
 
 const getAllTodos = async (): Promise<any> => {
   try {
