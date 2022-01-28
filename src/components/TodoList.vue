@@ -55,6 +55,7 @@
 </template>
 
 <script lang="ts">
+import Todo from '@/interfaces/Todo.interface';
 import Vue from 'vue';
 import store from '../store';
 
@@ -62,11 +63,11 @@ export default Vue.extend({
   name: 'TodoList',
   data: () => ({ newTodoDescription: '', isInputLoading: false }),
   methods: {
-    deleteTodo(todo: any) {
+    deleteTodo(todo: Todo) {
       console.log(todo);
       store.dispatch('deleteTodo', todo);
     },
-    toggleTodo(todoId: any) {
+    toggleTodo(todoId: string) {
       store.dispatch('toggleTodo', todoId);
     },
   },
@@ -76,9 +77,9 @@ export default Vue.extend({
         case 'all':
           return store.state.todos;
         case 'active':
-          return store.state.todos.filter((todo: any) => todo.completed === false);
+          return store.state.todos.filter((todo: Todo) => todo.completed === false);
         case 'completed':
-          return store.state.todos.filter((todo: any) => todo.completed === true);
+          return store.state.todos.filter((todo: Todo) => todo.completed === true);
         default:
           return store.state.todos;
       }

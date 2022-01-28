@@ -1,8 +1,9 @@
+import Todo from '@/interfaces/Todo.interface';
 import superagent from 'superagent';
 
 const apiURL = 'http://localhost:8080/';
 
-const getAllTodos = async () => {
+const getAllTodos = async (): Promise<any> => {
   try {
     const res = await superagent.get(`${apiURL}`);
     return res.body;
@@ -22,7 +23,7 @@ const createTodo = async (description: string): Promise<any> => {
   }
 };
 
-const updateTodo = async (todo: any): Promise<any> => {
+const updateTodo = async (todo: Todo): Promise<any> => {
   try {
     const res = await superagent.put(`${apiURL}`).send(todo);
     return res.body;
@@ -32,7 +33,7 @@ const updateTodo = async (todo: any): Promise<any> => {
   }
 };
 
-const deleteTodo = async (todo: any): Promise<any> => {
+const deleteTodo = async (todo: Todo): Promise<any> => {
   try {
     const res = await superagent.delete(`${apiURL}`).send(todo);
     return res.body;
@@ -53,5 +54,9 @@ const clearCompletedTodos = async (): Promise<any> => {
 };
 
 export default {
-  createTodo, getAllTodos, updateTodo, deleteTodo, clearCompletedTodos,
+  createTodo,
+  getAllTodos,
+  updateTodo,
+  deleteTodo,
+  clearCompletedTodos,
 };

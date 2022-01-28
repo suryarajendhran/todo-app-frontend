@@ -1,3 +1,4 @@
+import Todo from '@/interfaces/Todo.interface';
 import Vue from 'vue';
 import Vuex from 'vuex';
 import api from '../api';
@@ -25,12 +26,12 @@ export default new Vuex.Store({
       commit('updateTodos', await api.getAllTodos());
     },
     toggleTodo: async ({ commit, state }, todoId: string) => {
-      const [todoToBeUpdated]: any = state.todos.filter((todo: any) => todo.id === todoId);
+      const [todoToBeUpdated]: Todo[] = state.todos.filter((todo: Todo) => todo.id === todoId);
       todoToBeUpdated.completed = !todoToBeUpdated.completed;
       const { updatedTodos } = await api.updateTodo(todoToBeUpdated);
       commit('updateTodos', updatedTodos);
     },
-    deleteTodo: async ({ commit }, todo: any) => {
+    deleteTodo: async ({ commit }, todo: Todo) => {
       const { updatedTodos } = await api.deleteTodo(todo);
       commit('updateTodos', updatedTodos);
     },
