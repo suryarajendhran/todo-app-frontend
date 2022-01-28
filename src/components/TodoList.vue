@@ -9,17 +9,21 @@
     default-sort-direction="desc"
   >
     <b-table-column field="completed" label="Status" v-slot="props" centered>
-      <b-button
-        @click="
-          () => {
-            toggleTodo(props.row.id);
-          }
-        "
-        rounded
-        size="is-small"
-        :icon-left="props.row.completed ? 'check' : ''"
-      >
-      </b-button>
+      <div class="pretty p-icon p-round p-jelly is-size-4">
+        <input
+          type="checkbox"
+          v-model="props.row.completed"
+          @click="
+            () => {
+              toggleTodo(props.row.id);
+            }
+          "
+        />
+        <div class="state p-success-o">
+          <i class="icon mdi mdi-check-all"></i>
+          <label></label>
+        </div>
+      </div>
     </b-table-column>
     <b-table-column field="description" label="Todo content" v-slot="props">
       <p :class="{ strikethrough: props.row.completed, 'has-text-left': true }">
@@ -50,7 +54,8 @@
 
     <template #empty>
       <div class="has-text-centered">
-        Nothing to show here, time to {{filter === 'completed' ? 'complete' : 'add' }} some tasks 😇
+        Nothing to show here, time to {{ filter === "completed" ? "complete" : "add" }} some tasks
+        😇
       </div>
     </template>
   </b-table>
@@ -103,7 +108,8 @@ export default Vue.extend({
 .strikethrough {
   text-decoration: line-through;
 }
-td:first-child, td:last-child {
+td:first-child,
+td:last-child {
   width: 40px;
 }
 </style>

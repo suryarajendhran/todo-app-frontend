@@ -3,6 +3,7 @@ import Buefy from 'buefy';
 import App from './App.vue';
 import store from './store';
 import 'buefy/dist/buefy.css';
+import 'pretty-checkbox/dist/pretty-checkbox.min.css';
 
 Vue.use(Buefy);
 
