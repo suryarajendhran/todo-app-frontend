@@ -8,7 +8,7 @@
     default-sort="created_at"
     default-sort-direction="desc"
   >
-    <b-table-column field="completed" label="Status" v-slot="props" numeric>
+    <b-table-column field="completed" label="Status" v-slot="props" centered>
       <b-button
         @click="
           () => {
