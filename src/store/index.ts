@@ -6,10 +6,14 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: () => ({
     todos: [],
+    filter: 'all',
   }),
   mutations: {
     updateTodos: (state, todos) => {
       state.todos = todos;
+    },
+    updateFilter: (state, filter) => {
+      state.filter = filter;
     },
   },
   actions: {

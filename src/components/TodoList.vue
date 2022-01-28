@@ -72,7 +72,16 @@ export default Vue.extend({
   },
   computed: {
     todos() {
-      return store.state.todos;
+      switch (store.state.filter) {
+        case 'all':
+          return store.state.todos;
+        case 'active':
+          return store.state.todos.filter((todo: any) => todo.completed === false);
+        case 'completed':
+          return store.state.todos.filter((todo: any) => todo.completed === true);
+        default:
+          return store.state.todos;
+      }
     },
   },
   created() {

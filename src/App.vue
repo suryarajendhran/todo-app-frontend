@@ -10,6 +10,7 @@
           @keyup.native.enter="handleNewTodo"
         ></b-input>
       </b-field>
+      <Toolbar />
       <TodoList />
     </div>
   </div>
@@ -20,10 +21,11 @@ import Vue from 'vue';
 import Navbar from './components/Navbar.vue';
 import store from './store';
 import TodoList from './components/TodoList.vue';
+import Toolbar from './components/Toolbar.vue';
 
 export default Vue.extend({
   name: 'App',
-  components: { Navbar, TodoList },
+  components: { Navbar, TodoList, Toolbar },
   data: () => ({ newTodoDescription: '', isInputLoading: false }),
   methods: {
     async handleNewTodo() {
@@ -46,8 +48,8 @@ export default Vue.extend({
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+#app, button {
+  font-family: Avenir, Helvetica, Arial, sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
