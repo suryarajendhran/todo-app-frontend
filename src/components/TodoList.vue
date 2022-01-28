@@ -8,7 +8,7 @@
     default-sort="created_at"
     default-sort-direction="desc"
   >
-    <b-table-column field="completed" label="Status" centered v-slot="props">
+    <b-table-column field="completed" label="Status" v-slot="props" numeric>
       <b-button
         @click="
           () => {
@@ -21,8 +21,8 @@
       >
       </b-button>
     </b-table-column>
-    <b-table-column field="description" label="Todo content" centered v-slot="props">
-      <p :class="{ strikethrough: props.row.completed }">
+    <b-table-column field="description" label="Todo content" v-slot="props">
+      <p :class="{ strikethrough: props.row.completed, 'has-text-left': true }">
         {{ props.row.description }}
       </p>
     </b-table-column>
