@@ -99,8 +99,11 @@ export default Vue.extend({
 });
 </script>
 
-<style scoped>
+<style>
 .strikethrough {
   text-decoration: line-through;
+}
+td:first-child, td:last-child {
+  width: 40px;
 }
 </style>
