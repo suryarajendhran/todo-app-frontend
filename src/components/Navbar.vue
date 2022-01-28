@@ -1,17 +1,19 @@
 <template>
-  <b-navbar>
-    <template #brand>
-      <b-navbar-item>
-        <div class="title">Nameless todo app</div>
-      </b-navbar-item>
-    </template>
+  <div class="container my-3">
+    <b-navbar>
+      <template #brand>
+        <b-navbar-item>
+          <div class="title">Nameless todo app</div>
+        </b-navbar-item>
+      </template>
 
-    <template #end>
-      <b-navbar-item tag="div">
-        <div>{{ time }}</div>
-      </b-navbar-item>
-    </template>
-  </b-navbar>
+      <template #end>
+        <b-navbar-item tag="div">
+          <div>{{ time }}</div>
+        </b-navbar-item>
+      </template>
+    </b-navbar>
+  </div>
 </template>
 
 <script lang="ts">
