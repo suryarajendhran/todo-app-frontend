@@ -1,15 +1,8 @@
 <template>
   <div id="app">
     <Navbar />
-    <div class="container mt-4">
-      <b-field>
-        <b-input
-          v-model="newTodoDescription"
-          :loading="isInputLoading"
-          placeholder="Add your todo here"
-          @keyup.native.enter="handleNewTodo"
-        ></b-input>
-      </b-field>
+    <div :class="{'container mt-4': true, 'px-2': isMobile}">
+      <AddTodoBar />
       <Toolbar />
       <TodoList />
     </div>
@@ -22,10 +15,13 @@ import Navbar from './components/Navbar.vue';
 import store from './store';
 import TodoList from './components/TodoList.vue';
 import Toolbar from './components/Toolbar.vue';
+import AddTodoBar from './components/AddTodoBar.vue';
 
 export default Vue.extend({
   name: 'App',
-  components: { Navbar, TodoList, Toolbar },
+  components: {
+    Navbar, TodoList, Toolbar, AddTodoBar,
+  },
   data: () => ({ newTodoDescription: '', isInputLoading: false }),
   methods: {
     async handleNewTodo() {
@@ -39,6 +35,9 @@ export default Vue.extend({
   computed: {
     todos() {
       return store.state.todos;
+    },
+    isMobile() {
+      return store.state.isMobile;
     },
   },
   created() {
