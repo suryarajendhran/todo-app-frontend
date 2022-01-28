@@ -49,7 +49,9 @@
     </b-table-column>
 
     <template #empty>
-      <div class="has-text-centered">No records</div>
+      <div class="has-text-centered">
+        Nothing to show here, time to {{filter === 'completed' ? 'complete' : 'add' }} some tasks 😇
+      </div>
     </template>
   </b-table>
 </template>
@@ -86,6 +88,9 @@ export default Vue.extend({
     },
     isMobile() {
       return store.state.isMobile;
+    },
+    filter() {
+      return store.state.filter;
     },
   },
   created() {

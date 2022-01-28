@@ -3,7 +3,7 @@
     <b-input
       v-model="newTodoDescription"
       :loading="isInputLoading"
-      placeholder="Add your todo here"
+      placeholder="Add your todo here!"
       @keyup.native.enter="handleNewTodo"
     ></b-input>
   </b-field>
