@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Navbar />
-    <div :class="{'container mt-4': true, 'px-2': isMobile}">
+    <div :class="{ 'container mt-4': true, 'px-2': isMobile }">
       <AddTodoBar />
       <Toolbar />
       <TodoList />
@@ -20,7 +20,10 @@ import AddTodoBar from './components/AddTodoBar.vue';
 export default Vue.extend({
   name: 'App',
   components: {
-    Navbar, TodoList, Toolbar, AddTodoBar,
+    Navbar,
+    TodoList,
+    Toolbar,
+    AddTodoBar,
   },
   data: () => ({ newTodoDescription: '', isInputLoading: false }),
   methods: {
@@ -47,7 +50,8 @@ export default Vue.extend({
 </script>
 
 <style>
-#app, button {
+#app,
+button {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;

@@ -10,6 +10,7 @@ export default new Vuex.Store({
     todos: [],
     filter: 'all',
     isMobile: isMobile(),
+    user: null,
   }),
   mutations: {
     updateTodos: (state, todos) => {
@@ -17,6 +18,9 @@ export default new Vuex.Store({
     },
     updateFilter: (state, filter) => {
       state.filter = filter;
+    },
+    setUser: (state, user) => {
+      state.user = user;
     },
   },
   actions: {

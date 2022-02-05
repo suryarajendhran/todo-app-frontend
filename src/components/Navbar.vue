@@ -11,13 +11,23 @@
         <b-navbar-item tag="div">
           <div>{{ time }}</div>
         </b-navbar-item>
+        <b-navbar-item tag="div">
+          <b-button @click="openLogin" v-if="user === null" icon-left="google">
+            Login
+          </b-button>
+          <b-button @click="logOut" v-else>
+            Log Out
+          </b-button>
+        </b-navbar-item>
       </template>
     </b-navbar>
   </div>
 </template>
 
 <script lang="ts">
+import store from '@/store';
 import Vue from 'vue';
+import firebase from '../services';
 
 export default Vue.extend({
   name: 'Navbar',
@@ -25,6 +35,17 @@ export default Vue.extend({
   computed: {
     timeNow() {
       return Date.now();
+    },
+    user() {
+      return store.state.user;
+    },
+  },
+  methods: {
+    openLogin() {
+      firebase.triggerPopUp();
+    },
+    logOut() {
+      firebase.logOut();
     },
   },
   mounted() {
@@ -50,5 +71,9 @@ li {
 }
 a {
   color: #42b983;
+}
+.navbar-item {
+  display: flex;
+  justify-content: center;
 }
 </style>
